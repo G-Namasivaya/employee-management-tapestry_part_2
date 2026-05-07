@@ -1,0 +1,68 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+    <head>
+        <title>Edit Employee</title>
+        <!-- Import the external JS validator -->
+        <script src="${asset:context:js/age-validator.js}"></script>
+    </head>
+    <body style="font-family: Arial, sans-serif; padding: 20px;">
+        <t:CompanyHeader/>
+
+        <div style="margin: 20px;">
+            <h3>Edit Employee: ${employee.name}</h3>
+            
+            <t:form t:id="editForm" id="editForm" enctype="multipart/form-data">
+                <t:errors/>
+                
+                <div style="margin-bottom: 10px;">
+                    <t:label for="name">Name:</t:label>
+                    <t:textfield t:id="name" value="employee.name" validate="required"/>
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <t:label for="age">Age:</t:label>
+                    <!-- using a specific id 'ageInput' so JS can target it -->
+                    <t:textfield t:id="age" id="ageInput" value="employee.age" validate="required"/>
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <t:label for="address">Address:</t:label>
+                    <t:textfield t:id="address" value="employee.address" validate="required"/>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <t:label for="dob">Date of Birth:</t:label>
+                    <t:datefield t:id="dob" value="employee.dob" format="dd/MM/yyyy"/>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <t:label for="gender">Gender:</t:label>
+                    <t:select t:id="gender" value="employee.gender" model="literal:M,F" blankOption="ALWAYS" blankLabel="Choose..."/>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <t:label for="designation">Designation:</t:label>
+                    <t:textfield t:id="designation" value="employee.designation"/>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <t:label for="selectedRole">Role:</t:label>
+                    <t:select t:id="selectedRole" value="selectedRole" model="roleOptions" blankOption="ALWAYS" blankLabel="Choose Role..."/>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <t:label for="selectedPermissions">Permissions:</t:label>
+                    <br/>
+                    <t:checklist t:id="selectedPermissions" value="selectedPermissions" model="permissionOptions" encoder="stringEncoder"/>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <t:label for="uploadedImage">Profile Image:</t:label>
+                    <t:upload t:id="uploadedImage" value="uploadedImage"/>
+                </div>
+                
+                <div>
+                    <t:submit value="Update" class="btn btn-primary"/>
+                    <t:pagelink page="EmployeeList" class="btn btn-secondary" style="margin-left: 10px;">Cancel</t:pagelink>
+                </div>
+            </t:form>
+        </div>
+    </body>
+</html>

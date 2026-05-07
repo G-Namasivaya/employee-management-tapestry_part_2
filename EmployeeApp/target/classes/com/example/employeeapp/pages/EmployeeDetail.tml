@@ -1,0 +1,81 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+    <head><title>Employee Details</title></head>
+    <body style="font-family: Arial, sans-serif; padding: 20px;">
+        <t:CompanyHeader/>
+        
+        <div style="float: right; margin-bottom: 10px;">
+            <t:pagelink page="Logout" class="btn btn-danger">[CLOSE]</t:pagelink>
+        </div>
+
+        <div style="margin: 20px; clear: both;">
+            <t:zone t:id="detailZone" id="detailZone">
+                <t:if test="message">
+                    <div style="background-color: #d4edda; padding: 10px; margin-bottom: 15px; border-radius: 5px; color: green;">
+                        ${message}
+                    </div>
+                </t:if>
+
+                <h3>Employee Details</h3>
+                
+                <t:if test="employee">
+                    <!-- EmpBday nested component -->
+                    <t:EmpBday employee="employee"/>
+
+                    <dl class="dl-horizontal">
+                        <dt>ID</dt>
+                        <dd>${employee.id}</dd>
+                        
+                        <dt>Name</dt>
+                        <dd>${employee.name}</dd>
+                        
+                        <dt>Age</dt>
+                        <dd>${employee.age}</dd>
+                        
+                        <dt>Address</dt>
+                        <dd>${employee.address}</dd>
+
+                        <dt>Designation</dt>
+                        <dd>${employee.designation}</dd>
+
+                        <dt>Gender</dt>
+                        <dd>${employee.gender}</dd>
+                    </dl>
+                    
+                    <div style="margin-top: 20px;">
+                        <!-- ActionLink -->
+                        <t:actionlink t:id="showImage" zone="imageZone" class="btn btn-info" style="margin-right: 10px;">[IMAGE]</t:actionlink>
+                        
+                        <!-- EventLink nested inside component -->
+                        <t:PromoteButton employeeId="employee.id"/>
+                    </div>
+                    
+                    <p:else>
+                        <p>Employee not found.</p>
+                    </p:else>
+                </t:if>
+            </t:zone>
+            
+            <t:zone t:id="imageZone" id="imageZone">
+                <t:if test="showImagePopup">
+                    <div style="margin-top: 20px; border: 1px solid #ccc; padding: 15px; background: #f9f9f9; display: inline-block;">
+                        <h4>Employee Image Popup</h4>
+                        <t:if test="imageDataUri">
+                            <div style="text-align: center; margin: 10px auto;">
+                                <img src="${imageDataUri}" alt="Employee Image" style="max-width: 300px; border-radius: 10px;"/>
+                            </div>
+                            <p:else>
+                                <div style="width: 150px; height: 150px; background-color: #ccc; border-radius: 75px; text-align: center; line-height: 150px; margin: 10px auto;">
+                                    No Image Available
+                                </div>
+                            </p:else>
+                        </t:if>
+                        <t:actionlink t:id="closeImage" zone="imageZone" class="btn btn-sm btn-secondary">Close Popup</t:actionlink>
+                    </div>
+                </t:if>
+            </t:zone>
+
+            <br/>
+            <t:pagelink page="EmployeeList" class="btn btn-secondary">Back to List</t:pagelink>
+        </div>
+    </body>
+</html>

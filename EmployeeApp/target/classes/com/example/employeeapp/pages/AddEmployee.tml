@@ -1,0 +1,58 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+    <head><title>Add Employee</title></head>
+    <body style="font-family: Arial, sans-serif; padding: 20px;">
+    <t:CompanyHeader/>
+
+    <div style="margin: 20px;">
+        <h3>Add New Employee</h3>
+        
+        <t:form t:id="employeeForm" enctype="multipart/form-data">
+            <t:errors/>
+            
+            <div style="margin-bottom: 10px;">
+                <t:label for="name"/>
+                <t:textfield t:id="name" value="employee.name"/>
+            </div>
+            
+            <div style="margin-bottom: 10px;">
+                <t:label for="age"/>
+                <t:textfield t:id="age" value="employee.age"/>
+            </div>
+            
+            <div style="margin-bottom: 10px;">
+                <t:label for="address"/>
+                <t:textfield t:id="address" value="employee.address"/>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <t:label for="dob">Date of Birth:</t:label>
+                <t:datefield t:id="dob" value="employee.dob" format="dd/MM/yyyy"/>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <t:label for="gender">Gender:</t:label>
+                <t:select t:id="gender" value="employee.gender" model="literal:M,F" blankOption="ALWAYS" blankLabel="Choose..."/>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <t:label for="selectedRole">Role:</t:label>
+                <t:select t:id="selectedRole" value="selectedRole" model="roleOptions" blankOption="ALWAYS" blankLabel="Choose Role..."/>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <t:label for="selectedPermissions">Permissions:</t:label>
+                <br/>
+                <t:checklist t:id="selectedPermissions" value="selectedPermissions" model="permissionOptions" encoder="stringEncoder"/>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <t:label for="uploadedImage">Profile Image:</t:label>
+                <t:upload t:id="uploadedImage" value="uploadedImage"/>
+            </div>
+            
+            <div>
+                <t:submit value="Save" class="btn btn-primary"/>
+                <t:pagelink page="EmployeeList" class="btn btn-secondary" style="margin-left: 10px;">Cancel</t:pagelink>
+            </div>
+        </t:form>
+    </div>
+    </body>
+</html>

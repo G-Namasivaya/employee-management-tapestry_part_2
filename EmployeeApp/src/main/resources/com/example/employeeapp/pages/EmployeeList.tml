@@ -1,0 +1,30 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+    <head><title>Employee List</title></head>
+    <body style="font-family: Arial, sans-serif; padding: 20px;">
+        <t:CompanyHeader/>
+
+        <div style="float: right; margin-bottom: 10px;">
+            <t:pagelink page="Logout" class="btn btn-danger">[CLOSE]</t:pagelink>
+        </div>
+
+        <div style="margin: 20px; clear: both;">
+            <h3>Employee List</h3>
+            <p style="margin-bottom: 10px;">
+                <t:pagelink page="AddEmployee" class="btn btn-primary">Add New Employee</t:pagelink>
+                <t:pagelink page="SearchEmployee" class="btn btn-info" style="margin-left: 10px;">Search Employee</t:pagelink>
+            </p>
+
+            <t:grid source="employees" row="currentEmployee" add="idLink,edit" reorder="idLink,name,age,address,designation,edit" exclude="id,username,password,dob,gender">
+                <p:idLinkCell>
+                    <t:pagelink page="EmployeeDetail" context="currentEmployee.id">${currentEmployee.id}</t:pagelink>
+                </p:idLinkCell>
+                
+                <p:editCell>
+                    <t:if test="canEdit">
+                        <t:pagelink page="EditEmployee" context="currentEmployee.id" class="btn btn-sm btn-warning">Edit</t:pagelink>
+                    </t:if>
+                </p:editCell>
+            </t:grid>
+        </div>
+    </body>
+</html>

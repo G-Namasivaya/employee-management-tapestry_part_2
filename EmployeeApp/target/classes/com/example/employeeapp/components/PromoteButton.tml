@@ -1,0 +1,4 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+    <!-- EventLink called [PROMOTE] -->
+    <t:eventlink t:event="promote" class="btn btn-warning">[PROMOTE]</t:eventlink>
+</t:container>

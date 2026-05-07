@@ -1,0 +1,46 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+    <head>
+        <title>Search Employees</title>
+        <style>
+            /* Simple styles for autocomplete dropdown */
+            .autocomplete-suggestions { border: 1px solid #ccc; background: #FFF; overflow: auto; position: absolute; z-index: 9999; }
+            .autocomplete-suggestion { padding: 5px; white-space: nowrap; overflow: hidden; cursor: pointer; }
+            .autocomplete-selected { background: #F0F0F0; }
+        </style>
+        <script src="${asset:context:js/autocomplete.js}"></script>
+    </head>
+    <body style="font-family: Arial, sans-serif; padding: 20px;">
+        <t:CompanyHeader/>
+        
+        <div style="float: right; margin-bottom: 10px;">
+            <t:pagelink page="Logout" class="btn btn-danger">[CLOSE]</t:pagelink>
+        </div>
+
+        <div style="margin: 20px; clear: both;">
+            <h3>Search Employees</h3>
+            
+            <t:form t:id="searchForm">
+                <div style="margin-bottom: 10px; position: relative;">
+                    <t:label for="searchQuery">Employee Name/ID:</t:label>
+                    <!-- Apply our custom mixin CustomAutocomplete -->
+                    <t:textfield t:id="searchQuery" value="searchQuery" t:mixins="CustomAutocomplete" id="searchBox"/>
+                 <!--   <t:submit value="Search" class="btn btn-primary" style="margin-left: 10px;"/>-->
+                </div>
+            </t:form>
+
+            <hr/>
+
+            <t:if test="searchResults">
+                <h4>Search Results:</h4>
+                <t:grid source="searchResults" row="currentEmployee" add="idLink" reorder="idLink,name,age,address,designation" exclude="id,username,password,dob,gender,role,permissions">
+                    <p:idLinkCell>
+                        <t:pagelink page="EmployeeDetail" context="currentEmployee.id">${currentEmployee.id}</t:pagelink>
+                    </p:idLinkCell>
+                </t:grid>
+            </t:if>
+            
+            <br/>
+            <t:pagelink page="EmployeeList" class="btn btn-secondary">Back to List</t:pagelink>
+        </div>
+    </body>
+</html>

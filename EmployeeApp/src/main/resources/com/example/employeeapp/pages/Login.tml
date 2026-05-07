@@ -1,0 +1,24 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+    <head><title>Login</title></head>
+    <body style="font-family: Arial, sans-serif; padding: 20px;">
+    <t:CompanyHeader/>
+    
+    <div style="width: 300px; margin: 0 auto; padding-top: 50px;">
+        <h3>Login</h3>
+        <t:form t:id="loginForm">
+            <t:errors/>
+            <div style="margin-bottom: 10px;">
+                <t:label for="username">Username:</t:label>
+                <t:textfield t:id="username" validate="required"/>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <t:label for="password">Password:</t:label>
+                <t:passwordfield t:id="password" validate="required"/>
+            </div>
+            <div>
+                <t:submit value="Login" class="btn btn-primary"/>
+            </div>
+        </t:form>
+    </div>
+    </body>
+</html>
