@@ -1,26 +1,27 @@
-PART 2 - The continuation of Tapestry project
+# PART 2 – Employee Management System
 
-Features:
-Role & Permission Management
-Edit option to change employee details
-Employee age validation using external JavaScript
-Tapestry ActionLink, EventLink, and PageLink implementation
-Employee image popup and promotion functionality
-Birthday components using EmpBday and WishBanner
-PostgreSQL Full Text Search using tsearch and tsvector
-Custom autocomplete mixin for employee search
+## Features
+- Role & Permission Management
+- Edit Employee Details
+- Employee Age Validation using JavaScript
+- Tapestry ActionLink, EventLink, and PageLink
+- Employee Image Popup
+- Employee Promotion Functionality
+- Birthday Components with EmpBdy
+- PostgreSQL Full Text Search
+- Autocomplete Mixin for Employee Search
 
-Tech Stack:
-Java
-Apache Tapestry
-Spring Framework
-Hibernate ORM
-PostgreSQL
-JavaScript
-Maven
+## Tech Stack
+- Java
+- Apache Tapestry
+- Spring Framework
+- Hibernate ORM
+- PostgreSQL
+- JavaScript
+- Maven
 
-How to Run:
-Clone project Configure DB in properties file
-Run Maven build 
-Deploy on Tomcat / Jetty
-
+## How to Run
+1. Clone the project
+2. Configure DB in properties file
+3. Run Maven build
+4. Deploy on Tomcat / Jetty
